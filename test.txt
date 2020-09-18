@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 This is a test text.
+=======
+THIS IS A HIGHLY IMPORTANT TEST.
+
+That is all.
+>>>>>>> parent of 0de609b... Removed test.txt
