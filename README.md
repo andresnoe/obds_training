@@ -10,3 +10,9 @@ Edit #2
 Edit #3
 
 Edit #4 EMOJIs BOOM :+1: :shipit:
+
+Edit #5
+My to do list:
+- [x] Start OBDS
+- [ ] Finish thesis
+- [ ] Continue life
