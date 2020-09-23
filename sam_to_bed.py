@@ -38,6 +38,10 @@ parser.add_argument('--pad','-p', dest='bedfilepad',
                     type =int,
                     default = 0,
                     help='number of bases added to start and end of bed file interval')
+parser.add_argument('--fragment', '-f',less dest='fragment',
+                    action = 'store_true',
+                    default=False,
+                    help="Boolean flag: the output bedfile provides the coordinates of the sequenced FRAGMENTS rather than reads (default = FALSE)")
 args=parser.parse_args()
 
 with open (args.samfilepath, 'r') as samfile:
@@ -67,11 +71,18 @@ with open (args.samfilepath, 'r') as samfile:
                 # name, (col 1)
                 name = col[0]
                 # score, (col 5)
-                score = col[4]
+                score = int(col[4])
                 if score == 0:
                     continue
                 # strand for a set of genomic positions (hard code ".")
                 strand = '.'
-                bedfile.write(f'{chrom}\t{start}\t{end}\t{name}\t{score}\t{strand}\n')
+                if args.fragment:
+                # TLEN column in SAM file to avoid using stranded pairs twice
+                    tlen = int(col[8])
+                    if tlen>0:
+                        end = (int(col[3]) + tlen)
+                        bedfile.write(f'{chrom}\t{start}\t{end}\t{name}\t{score}\t{strand}\n')
+                else:
+                    bedfile.write(f'{chrom}\t{start}\t{end}\t{name}\t{score}\t{strand}\n')
 
-# Provide a command line argument to pad the intervals in the bed file
+
