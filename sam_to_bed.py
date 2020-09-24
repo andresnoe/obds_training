@@ -38,7 +38,7 @@ parser.add_argument('--pad','-p', dest='bedfilepad',
                     type =int,
                     default = 0,
                     help='number of bases added to start and end of bed file interval')
-parser.add_argument('--fragment', '-f',less dest='fragment',
+parser.add_argument('--fragment', '-f', dest='fragment',
                     action = 'store_true',
                     default=False,
                     help="Boolean flag: the output bedfile provides the coordinates of the sequenced FRAGMENTS rather than reads (default = FALSE)")
