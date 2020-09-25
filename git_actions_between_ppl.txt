@@ -1,0 +1,47 @@
+# Change working directory to repository folder
+cd ../OBDS_Training_Sep_2020/
+
+# Check status and pull
+git status
+git pull
+
+# CHANGE BRANCH and check
+git checkout -b <<name of branch>>
+git status
+
+# Add and commit file
+git add <<file to be added/commited>>
+git commit -m "<<Commit message, make it informative>>"
+git status
+
+# Push file
+git push --set-upstream origin <<name of branch>>
+
+## GO TO GITHUB AND PULL REQUEST/MERGE CHANGES AND DELETE GITHUB BRANCH
+
+# Change back to master and pull
+git checkout master
+git pull
+
+# Delete local copy of branch
+git branch -d <<Name of branch>>
+git status
+git pull
+
+Clean version:
+git status
+git pull
+git checkout -b andres
+git checkout -b andres1
+git status
+git add Bamtobed.py
+git commit -m "Bamtobed.py command line runnable"
+git status
+git push
+git push --set-upstream origin andres1
+git checkout master
+git pull
+git branch -d andres
+git branch -d andres1
+git status
+git pull
