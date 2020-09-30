@@ -34,9 +34,10 @@ def cellranger_count(infile, outfile):
     > %(sampleid)s_standardout.log
     2> %(sampleid)s_standarderror.log
     && mv %(sampleid)s count/
+    && touch %(outfile)s.done
     ''' # command line string statement, all options need to sit within these quotes, which p.run will send to the cluster as a job
         # Once cellranger runs, move the samples to count/ folder
-        # If cellranger see count
+        # the touch %(outfile)s.done produce a file that shows that the pipeline has run fully, successfully.
     totalmem=str(params["cellrangercount_memory"])+'G'
     P.run(statement, job_queue='all.q',
           job_threads=params["cellrangercount_threads"],
