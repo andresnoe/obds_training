@@ -33,6 +33,7 @@ def cellranger_count(infile, outfile):
     --localmem=         %(cellrangercount_memory)s
     > %(sampleid)s_standardout.log
     2> %(sampleid)s_standarderror.log
+    && rm -rf count/%(sampleid)s
     && mv %(sampleid)s count/
     && touch %(outfile)s.done
     ''' # command line string statement, all options need to sit within these quotes, which p.run will send to the cluster as a job

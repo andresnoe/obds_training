@@ -1,0 +1,13 @@
+pattern:
+    # Pattern matching the filename of paired reads
+    fastq1: "_R1_001.fastq.gz"
+    fastq2: "_R2_001.fastq.gz"
+
+index_file: /ifs/obds-training/sep20/shared/week3/salmon_index
+
+threads: 12
+
+tgMap_file: /ifs/obds-training/sep20/shared/week3/txp2gene.tsv
+    # transcript to gene map file
+
+job_memory: 2G
