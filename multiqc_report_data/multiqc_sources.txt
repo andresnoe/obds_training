@@ -1,0 +1,15 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	ERR1755089_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755089_1_test_fastqc.zip
+FastQC	all_sections	ERR1755085_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755085_2_test_fastqc.zip
+FastQC	all_sections	ERR1755082_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755082_2_test_fastqc.zip
+FastQC	all_sections	ERR1755088_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755088_1_test_fastqc.zip
+FastQC	all_sections	ERR1755084_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755084_1_test_fastqc.zip
+FastQC	all_sections	ERR1755088_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755088_2_test_fastqc.zip
+FastQC	all_sections	ERR1755089_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755089_2_test_fastqc.zip
+FastQC	all_sections	ERR1755082_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755082_1_test_fastqc.zip
+FastQC	all_sections	ERR1755087_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755087_2_test_fastqc.zip
+FastQC	all_sections	ERR1755086_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755086_2_test_fastqc.zip
+FastQC	all_sections	ERR1755087_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755087_1_test_fastqc.zip
+FastQC	all_sections	ERR1755084_2_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755084_2_test_fastqc.zip
+FastQC	all_sections	ERR1755086_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755086_1_test_fastqc.zip
+FastQC	all_sections	ERR1755085_1_test	/ifs/obds-training/sep20/andres/pipeline/rnaseq_pipeline/fastqc/ERR1755085_1_test_fastqc.zip
