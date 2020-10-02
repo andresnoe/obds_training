@@ -1,0 +1,22 @@
+q: all.q
+threads: 1
+job_memory: 2G
+
+picard:
+    memory: 8
+    genome: /ifs/mirror/genomes/plain/mm10.fasta
+    remove_dups: True
+
+
+filterbam_opts: -F 4 -F 100 -q 20
+# -q INT   only include reads with mapping quality >= INT [0]
+# -F INT   only include reads with none of the FLAGS in INT present [0]
+# 4 is the flag for "unmapped reads"
+# 100 is the flag for "not primary alignment" (ie multi-mapping)
+
+
+# blacklist to filter out fake peaks caused by repeat regions/genomic artifacts
+# obtained from encode https://sites.google.com/site/anshulkundaje/projects/blacklists
+# This file is the version 2 blacklist - version 3 not available for mouse yet
+blacklist: /ifs/obds-training/sep20/exercises/chipseq/mm10-blacklist.v2.bed.gz
+deeptools_threads: 4

@@ -1,0 +1,15 @@
+q: all.q
+
+index_fasta: /ifs/obds-training/sep20/exercises/pipelines/a_group/Mus_musculus.GRCm38.cdna.all.fa.gz
+# ftp://ftp.ensembl.org/pub/release-101/fasta/mus_musculus/cdna/Mus_musculus.GRCm38.cdna.all.fa.gz
+# Pipeline run 02/10/20
+# Release 101
+
+kallisto_quant:
+    index: /ifs/obds-training/sep20/exercises/pipelines/a_group/kallisto_index_folder/Mus_musculus.GRCm38.cdna.all.idx
+
+
+kallisto_options:
+    strandness: --rf-stranded
+    seed: --seed=42
+    bootstrap: --bootstrap-samples=0
