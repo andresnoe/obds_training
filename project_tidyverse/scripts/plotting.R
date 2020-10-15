@@ -56,4 +56,30 @@ legend(legend = sort(unique(mtcars$gear)),
 
 # PLOTTING IN ggplot2
 
+#import file
+getwd()
+cgr <- read.table("data/coding_gene_region.bed")
 
+str(cgr)
+head(cgr)
+tail(cgr)
+colnames(cgr) <- c("chr","start","end","ensemblID","score","strand")
+head(cgr)
+class(cgr)
+
+
+cgr$length <- cgr$end-cgr$start
+cgr
+
+ggplot(cgr, aes(x = length)) +
+  geom_histogram(bins = 100, fill = "red", colour = "green") +
+  labs(title = "Histogram of interval length",
+       x = "Interval length",
+       y = "Count") +
+  theme(axis.title.x = element_text(size = 20, face = "bold"),
+        axis.title.y = element_text(size = 10, face = "italic"),
+        axis.text.x = element_text(angle = 45, hjust = 1, vjust = 0.5),
+        axis.text.y = element_text(angle = 135, hjust = 1, vjust = 0.5),
+        plot.title = element_text(hjust=0.5)) +
+  xlim(0,1500000)
+  
