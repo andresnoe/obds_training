@@ -21,7 +21,6 @@ hist(num_vector, breaks = 50)
 num_df <- data.frame(NAME = num_vector)
 head(num_df)
 library(tidyverse)
-install.packages("ggthemes")
 library(ggthemes)
 
 num_df %>%
@@ -203,21 +202,67 @@ diff_exp(3,log_counts,cell_md$Infection)
 p_values <- vapply(seq(1,nrow(log_counts)), diff_exp, numeric(1), matrix = log_counts, groups = cell_md$Infection)
 names(p_values) <- rownames(log_counts)
 p_values
+hist(p_values)
+table(p_values<0.05)
 
-padj_values <- p.adjust(p_values, method = "holm")
+padj_values <- p.adjust(p_values, method = "BH")
 hist(padj_values)
 
 head(sort(padj_values))
+
+table(padj_values<0.05)
+
+sig_genes <- padj_values[padj_values<0.05]
 
 #OVER-REPRESENTATION ANALYSIS
 
 human_go_bp <- read.csv("data/human_go_bp.csv")
 # View(log_counts)
+head(human_go_bp)
+dim(human_go_bp)
 go_info <- read.csv("data/go_info.csv")
-# View(cell_md)
+# View(go_info)
+head(go_info)
 
-#Make list
-#Take first pathway
-#Turn first pathway's code into vapply
-#Do vapply
-## For each, build table with Fisher's test, how many belong in the pathway or not (over-rep)
+sig_gene_name <- names(sig_genes)
+head(sig_gene_name)
+
+pathway_list <- split(human_go_bp$ensembl_gene_id,human_go_bp$go_id)
+
+str(pathway_list)
+pathway_one <- pathway_list[[1]]
+
+rownames(log_counts) %in% sig_gene_name
+
+overlap_table <- data.frame(row.names = rownames(log_counts),
+                  significant = rownames(log_counts) %in% sig_gene_name,
+                  in_pathway = rownames(log_counts) %in% pathway_one)
+contingency_table <- table(overlap_table)
+fisher_result <- fisher.test(table(overlap_table), alternative = 'greater')
+fisher_result$p.value
+
+
+pathway_enrich <- function(pathway,matrix,de_genes){
+    overlap_table <- data.frame(
+        row.names = rownames(matrix),
+        significant = factor(rownames(matrix) %in% de_genes, c(FALSE,TRUE)),
+        in_pathway = factor(rownames(matrix) %in% pathway,c(FALSE,TRUE)))
+    fisher_result <- fisher.test(table(overlap_table), alternative = 'greater')
+    return(fisher_result$p.value)
+}
+
+pathway_enrich(pathway_one,log_counts,sig_gene_name)
+fisher_enrichment <- sapply(pathway_list, pathway_enrich, matrix = log_counts, de_genes = sig_gene_name)
+
+hist(fisher_enrichment,50)
+
+fisher_adjusted <- p.adjust(fisher_enrichment, method = "BH")
+
+head(sort(fisher_adjusted))
+hist(fisher_adjusted, 50)
+which(fisher_adjusted<0.05)
+
+sig_pathways <- which(fisher_enrichment<0.05)
+sig_pathways <- rownames_to_column(data.frame(sig_pathways))
+go_info$rowname <- go_info$GOID
+left_join(sig_pathways, go_info)
