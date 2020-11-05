@@ -26,7 +26,9 @@ pbmc.data <- Read10X("/Users/andresnoe/obds_sep20/working_directory/filtered_fea
 pbmc.data
 View(pbmc.data)
 class(pbmc.data) #This is a list 
-summary(pbmc.data)
+summary(pbmc.data$`Antibody Capture`)
+rownames(pbmc.data$`Antibody Capture`)
+colnames(pbmc.data$`Antibody Capture`)
 
 # Let's now create the Seurat object
 pbmc <- CreateSeuratObject(counts = pbmc.data$`Gene Expression`,
