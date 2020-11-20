@@ -12,6 +12,10 @@ Steps required
 - 5_sleuth_differential expression (R)
 - 6_pathway_analysis (R)
 
+To run full pipeline: python kallisto_pipeline_a.py make
+To check up to and including a point:
+python kallisto_pipeline_a.py show kallisto_quant -v 5
+
 '''
 
 from ruffus import *
