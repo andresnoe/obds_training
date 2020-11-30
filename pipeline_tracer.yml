@@ -1,9 +1,4 @@
-pattern:
-    # Pattern matching the filename of paired reads
-    fastq1: "_R1_001.fastq.gz"
-    fastq2: "_R2_001.fastq.gz"
-
-batch: "batch1_"
+# Full run options 201120
 
 q: all.q
 
@@ -15,7 +10,7 @@ tracer_options:
     species: Hsap
 
 assemble:
-    ncores: 16
+    ncores: 12
     quant.method: kallisto
     single.end: --single_end
     # NB: Use --single_end here ^ for single end, leave blank for paired end
@@ -28,13 +23,14 @@ assemble:
     # NB: The location of an index that is built (exclusively) from the
     #       corresponding base_transcriptome must be specified in the configuration file
     #       (under [salmon_base_indices] or [kallisto_base_indices]).
-    output.directory: 20201119_tracer_assemble
+    output.directory: 20201120_full_run
     job.memory: 4G
 
 summarise:
-
-
-tgMap_file: /ifs/obds-training/sep20/shared/week3/txp2gene.tsv
-    # transcript to gene map file
-
-index_file: /ifs/obds-training/sep20/shared/week3/salmon_index
+    keep.invariant: --keep_invariant
+    # NB: Use --keep_invariant ^ here OR leave blank
+    # TraCeR identifies invariant TCR by characteristic TCRA gene segments.
+    # By default, these are removed before creation of clonotype networks (blank)
+    no.networks: --no_networks
+    # NB: Use --no_networks ^ here OR leave blank
+    # Useful when there's not a working installation of Graphviz
